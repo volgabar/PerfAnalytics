@@ -14,11 +14,6 @@ app.use(cors());
 // parse application/json
 app.use(bodyParser.json());
 
-try {
-    routes(router);
-} catch (e) {
-    console.log(e);
-}
 // error middleware
 app.use((err: unknown, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err) {
@@ -28,6 +23,12 @@ app.use((err: unknown, req: express.Request, res: express.Response, next: expres
         next();
     }
 });
+
+try {
+    routes(router);
+} catch (e) {
+    console.log(e);
+}
 
 app.use(router);
 
