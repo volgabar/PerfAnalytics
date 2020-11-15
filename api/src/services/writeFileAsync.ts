@@ -1,8 +1,9 @@
 import * as fs from 'fs';
 //local imports
-import { IPerfMetrics } from '../interfaces/perfMetrics';
+import IPerfMetric from '../interfaces/perfMetric';
+import IPerfMetrics from '../interfaces/perfMetrics';
 
-export const writeFileAsync = async (newMetric: unknown): Promise<string> => {
+export const writeFileAsync = async (newMetric: IPerfMetric): Promise<string> => {
     const fileName = process.env.FILE_NAME || './dist/perfMetrics.json';
 
     const doesExist = await new Promise((resolve) => {
