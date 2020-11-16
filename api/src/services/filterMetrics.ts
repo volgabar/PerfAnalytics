@@ -4,5 +4,5 @@ export const filterMetrics = ({ metrics }: { metrics: IPerfMetric[] }): IPerfMet
     const date = new Date();
     date.setMinutes(date.getMinutes() - 30);
 
-    return metrics.filter((metric: IPerfMetric) => new Date(metric.createdAt) >= date);
+    return metrics?.filter((metric: IPerfMetric) => new Date(metric.createdAt) >= date);
 };

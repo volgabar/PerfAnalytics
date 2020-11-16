@@ -1,4 +1,4 @@
-interface IMetricType {
+export interface IMetricType {
     y: number;
     x: string;
 }

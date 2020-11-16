@@ -24,11 +24,7 @@ app.use((err: unknown, req: express.Request, res: express.Response, next: expres
     }
 });
 
-try {
-    routes(router);
-} catch (e) {
-    console.log(e);
-}
+routes(router);
 
 app.use(router);
 

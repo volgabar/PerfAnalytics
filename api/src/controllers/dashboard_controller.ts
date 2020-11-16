@@ -10,7 +10,6 @@ export const getMetrics = async (req: Request, res: Response): Promise<void> => 
     const metrics = await readFileAsync();
     const parsedMetrics: IPerfMetrics = JSON.parse(metrics);
     const filteredMetrics: IPerfMetric[] = filterMetrics(parsedMetrics);
-    console.log(filteredMetrics);
     const transformedMetrics = transformMetrics(filteredMetrics);
     const stringifiedMetrics = JSON.stringify(transformedMetrics);
     res.status(200).send(stringifiedMetrics);
