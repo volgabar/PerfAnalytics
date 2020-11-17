@@ -3,6 +3,6 @@ export default interface IPerfMetric {
     fcp: number;
     domLoad: number;
     windowLoad: number;
-    networkTimings: unknown;
+    resourcePerformance: unknown;
     createdAt: string;
 }

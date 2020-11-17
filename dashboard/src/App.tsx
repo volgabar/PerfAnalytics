@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Charts from './components/Charts';
 import Header from './components/Header';
