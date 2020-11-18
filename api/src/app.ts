@@ -1,11 +1,10 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
-import * as dotenv from 'dotenv';
+import * as swaggerJsDoc from 'swagger-jsdoc';
+import * as swaggerUi from 'swagger-ui-express';
 //local imports
 import routes from './routes';
-
-dotenv.config();
 
 const app: express.Application = express();
 const router: express.Router = express.Router();
@@ -23,6 +22,31 @@ app.use((err: unknown, req: express.Request, res: express.Response, next: expres
         next();
     }
 });
+
+const swaggerOptions = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            version: "1.0.0",
+            title: "PerfAnalytics API",
+            description: "PerfAnalytics Info",
+            contact: {
+                name: "Volga Barış Civelek"
+            },
+        },
+        servers: [
+            {
+                url: "http://localhost:3000",
+            },
+        ],
+        basePath: "/api"
+    },
+    explorer: true,
+    apis: ["**/*.ts"]
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 routes(router);
 

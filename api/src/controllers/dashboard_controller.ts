@@ -6,11 +6,11 @@ import { filterMetrics } from '../services/filterMetrics';
 import { readFileAsync } from '../services/readFileAsync';
 import { transformMetrics } from '../services/transformMetrics';
 
-export const getMetrics = async (req: Request, res: Response): Promise<void> => {
+export const getMetrics = async (req: Request, res: Response): Promise<Response> => {
     const metrics = await readFileAsync();
     const parsedMetrics: IPerfMetrics = JSON.parse(metrics);
     const filteredMetrics: IPerfMetric[] = filterMetrics(parsedMetrics);
     const transformedMetrics = transformMetrics(filteredMetrics);
     const stringifiedMetrics = JSON.stringify(transformedMetrics);
-    res.status(200).send(stringifiedMetrics);
+    return res.status(200).send(stringifiedMetrics);
 };

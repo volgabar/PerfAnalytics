@@ -1,9 +1,16 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, RenderResult, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import App from './App';
 
-test('renders learn react link', () => {
-    render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+let container: RenderResult;
+describe('<App />', () => {
+    test('renders header', () => {
+        act(() => {
+            render(<App />, container);
+        });
+
+        const headerElement = screen.getByText('PerfAnalytics');
+        expect(headerElement).toBeInTheDocument();
+    });
 });

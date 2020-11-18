@@ -6,6 +6,8 @@ import IPerfMetrics from '../interfaces/perfMetrics';
 export const writeFileAsync = async (newMetric: IPerfMetric): Promise<string> => {
     const fileName = process.env.FILE_NAME || './dist/perfMetrics.json';
 
+    console.log(newMetric)
+
     const doesExist = await new Promise((resolve) => {
         fs.access(fileName, (err) => {
             if (err) {
