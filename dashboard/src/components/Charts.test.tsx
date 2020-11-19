@@ -1,22 +1,56 @@
 import React from 'react';
-import { render, RenderResult, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import Charts from './Charts';
+import { unmountComponentAtNode } from 'react-dom';
 
-let container: RenderResult;
+let container: any = null;
+beforeEach(() => {
+    // setup a DOM element as a render target
+    container = document.createElement('div');
+    document.body.appendChild(container);
+});
+
+afterEach(() => {
+    // cleanup on exiting
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+});
+
 describe('<Charts />', () => {
-    test('should render all charts', () => {
-        act(() => {
+    test('should render all charts', async () => {
+        const fakeMetrics = {
+            ttfb: [
+                { y: 5, x: '2020-11-18T23:10:27.623Z' },
+                { y: 2, x: '2020-11-18T23:10:55.255Z' },
+            ],
+            fcp: [
+                { y: 6, x: '2020-11-18T23:10:27.623Z' },
+                { y: 1, x: '2020-11-18T23:10:55.255Z' },
+            ],
+            domLoad: [
+                { y: 3, x: '2020-11-18T23:10:27.623Z' },
+                { y: 4, x: '2020-11-18T23:10:55.255Z' },
+            ],
+            windowLoad: [
+                { y: 2, x: '2020-11-18T23:10:27.623Z' },
+                { y: 6, x: '2020-11-18T23:10:55.255Z' },
+            ],
+        };
+
+        jest.spyOn(global, 'fetch').mockImplementation((): any =>
+            Promise.resolve({
+                json: () => Promise.resolve(fakeMetrics),
+            }),
+        );
+
+        await act(async () => {
             render(<Charts />, container);
         });
-        const ttfb = container.getByText('TTFB');
-        const fcp = container.getByText('FCP');
-        const windowLoad = container.getByText('Window Load');
-        const domLoad = container.getByText('DOM Load');
 
-        expect(ttfb).toBeInTheDocument();
-        expect(fcp).toBeInTheDocument();
-        expect(windowLoad).toBeInTheDocument();
-        expect(domLoad).toBeInTheDocument();
+        const chartsClass = container.getElementsByClassName('Chart');
+
+        expect(chartsClass).toBeDefined();
     });
 });

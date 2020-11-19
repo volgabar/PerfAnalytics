@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    api:
+        build:
+            context: ./api
+        image: perf-nalytics/api:latest
+        container_name: perfAnalytics-api
+        # stdin_open: true # docker run -i
+        # tty: true        # docker run -t
+        env_file:
+          - ./api/.env.prod
+        restart: on-failure
+        ports:
+            - "8080:3000"
+    dashboard:
+        build: ./dashboard
+        image: perf-analytics/dashboard:latest
+        container_name: perfAnalytics-dashboard
+        ports:
+            - "80:80"

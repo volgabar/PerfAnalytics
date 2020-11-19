@@ -4,9 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "npm run clean && tsc && cp .env ./dist/.env ",
+        "build:dev": "yarn run clean && tsc && cp .env ./dist/.env ",
+        "build:prod": "tsc",
         "clean": "rimraf dist",
-        "dev": "node ./dist/app",
+        "start": "node ./dist/app",
         "test": "jest",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
     },
