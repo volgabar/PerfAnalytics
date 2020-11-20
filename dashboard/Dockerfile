@@ -25,4 +25,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 # Copy our config
 COPY config/nginx.conf /etc/nginx/conf.d
 
+EXPOSE 8080/tcp
+EXPOSE 8080/udp
+
 CMD ["nginx", "-g", "daemon off;"]
