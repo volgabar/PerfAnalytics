@@ -30,13 +30,14 @@ jobs:
         run: |
           yarn test 
 
-      # - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
-      #   with:
-      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #     heroku_app_name: "perf-analytics-app-dashboard" #Must be unique in Heroku
-      #     heroku_email: "volgabarcivelek@gmail.com"
-      #     appdir: "dashboard" # <- This will point to the api folder in your project
-      #     usedocker: true
+      - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "perf-analytics-app-dashboard" #Must be unique in Heroku
+          heroku_email: "volgabarcivelek@gmail.com"
+          dontuseforce: 1
+          appdir: "dashboard" # <- This will point to the api folder in your project
+          usedocker: true
 
       # - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
       #   id: heroku
@@ -47,12 +48,12 @@ jobs:
       #     app_name: "perf-analytics-app-dashboard" # you aplication name
       #     dockerfile_path: './dashboard/' # set the path to the folder wher the Dokerfile is located
 
-      - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
-        id: heroku
-        uses: jctaveras/heroku-deploy@v1.0.0  # use the latest version of the action
-        with:
-          email: "volgabarcivelek@gmail.com" # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          app_name: "perf-analytics-app-dashboard" # you aplication name
-          dockerfile_path: 'dashboard' # set the path to the folder wher the Dokerfile is located
-          options: '' # Docker Build Options
+      # - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
+      #   id: heroku
+      #   uses: jctaveras/heroku-deploy@v1.0.0  # use the latest version of the action
+      #   with:
+      #     email: "volgabarcivelek@gmail.com" # your heroku email
+      #     api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
+      #     app_name: "perf-analytics-app-dashboard" # you aplication name
+      #     dockerfile_path: 'dashboard' # set the path to the folder wher the Dokerfile is located
+      #     options: '' # Docker Build Options
