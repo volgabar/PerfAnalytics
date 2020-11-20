@@ -11,6 +11,8 @@ export default (router: Router): void => {
      *    responses:
      *      '200':
      *         description: A succesful response
+     *      '204':
+     *         description: A succesful response, but no content to return
      */
     router.get('/dashboards', getFiltered);
 };
