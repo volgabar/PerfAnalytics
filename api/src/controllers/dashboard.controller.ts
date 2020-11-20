@@ -9,14 +9,14 @@ import { transformMetrics } from '../services/transform-metrics';
 export const getFiltered = async (req: Request, res: Response): Promise<Response> => {
     const metrics = await getMetrics();
 
-    if(!metrics){
+    if (!metrics) {
         return res.status(204).send();
     }
 
     const parsedMetrics: IPerfMetrics = JSON.parse(metrics);
     const filteredMetrics: IPerfMetric[] = filterMetrics(parsedMetrics);
-    
-    if(filteredMetrics.length){
+
+    if (filteredMetrics.length) {
         return res.status(204).send();
     }
 
