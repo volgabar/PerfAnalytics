@@ -30,7 +30,7 @@ export default (router: Router): void => {
 
     /**
      * @swagger
-     * /perfMetrics:
+     * /perf-metrics:
      *   post:
      *     summary: to add new metrics
      *     requestBody:
@@ -43,5 +43,5 @@ export default (router: Router): void => {
      *       '200':
      *          description: A succesful response
      */
-    router.post('/perfMetrics', addOne);
+    router.post('/perf-metrics', addOne);
 };

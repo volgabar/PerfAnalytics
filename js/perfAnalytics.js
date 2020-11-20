@@ -29,7 +29,7 @@ window.addEventListener("load", function (e) {
     console.log("resourcePerformance", resourcePerformance);
 
     var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
-    var theUrl = "https://perf-analytics-app-api.herokuapp.com/perfMetrics";
+    var theUrl = "https://perf-analytics-app-api.herokuapp.com/perf-metrics";
     xmlhttp.open("POST", theUrl);
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send(
