@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import fs from 'fs';
 //local imports
 import IPerfMetric from '../interfaces/perfMetric';
 import IPerfMetrics from '../interfaces/perfMetrics';

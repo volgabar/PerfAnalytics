@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build:dev": "yarn run clean && tsc && cp .env ./dist/.env ",
+        "build:dev": "yarn run clean && tsc",
         "build:prod": "tsc",
         "clean": "rimraf dist",
         "start": "node ./dist/app",

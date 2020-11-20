@@ -1,8 +1,8 @@
-import * as express from 'express';
-import * as cors from 'cors';
-import * as bodyParser from 'body-parser';
-import * as swaggerJsDoc from 'swagger-jsdoc';
-import * as swaggerUi from 'swagger-ui-express';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 //local imports
 import routes from './routes';
 
@@ -12,6 +12,7 @@ const router: express.Router = express.Router();
 app.use(cors());
 // parse application/json
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const swaggerOptions = {
     definition: {

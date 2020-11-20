@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import fs from 'fs';
 
 export const readFileAsync = async (): Promise<string> => {
     const fileName = process.env.FILE_NAME || './dist/perfMetrics.json';
