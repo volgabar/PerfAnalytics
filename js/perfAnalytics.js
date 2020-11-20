@@ -1,28 +1,17 @@
-// "use strict";
-
 window.addEventListener("load", function (e) {
+  //wait for load eventend
   setTimeout(function () {
-    const pageNav = performance.getEntriesByType("navigation")[0];
+    var pageNav = performance.getEntriesByType("navigation")[0];
 
-    // const paintTimings = performance.getEntriesByType("paint");
-    // const fmp = paintTimings.find(
-    //   ({ name }) => name === "first-contentful-paint"
-    // );
-    // const fcp = fmp.startTime;
-
-    const ttfb = pageNav.responseStart - pageNav.requestStart;
-    // const fcp =
-    //   performance.getEntriesByName("first-contentful-paint").length > 0
-    //     ? performance.getEntriesByName("first-contentful-paint")[0].startTime
-    //     : 0;
-    const fcp = performance.getEntriesByName("first-contentful-paint")[0]
+    var ttfb = pageNav.responseStart - pageNav.requestStart;
+    var fcp = performance.getEntriesByName("first-contentful-paint")[0]
       .startTime;
-    const windowLoad = pageNav.loadEventEnd - pageNav.loadEventStart;
-    const domLoad =
+    var windowLoad = pageNav.loadEventEnd - pageNav.loadEventStart;
+    var domLoad =
       pageNav.domContentLoadedEventEnd - pageNav.domContentLoadedEventStart;
 
-    let resourcePerformance = [];
-    const resourceTypes = ["css", "img", "script", "subdocument", "other"];
+    var resourcePerformance = [];
+    var resourceTypes = ["css", "img", "script", "subdocument", "other"];
     performance.getEntriesByType("resource").forEach((r) => {
       if (resourceTypes.includes(r.initiatorType)) {
         resourcePerformance.push({
@@ -38,5 +27,19 @@ window.addEventListener("load", function (e) {
     console.log("windowLoad", windowLoad);
     console.log("domLoad", domLoad);
     console.log("resourcePerformance", resourcePerformance);
+
+    var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+    var theUrl = "https://perf-analytics-app-api.herokuapp.com/perfMetrics";
+    xmlhttp.open("POST", theUrl);
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(
+      JSON.stringify({
+        ttfb: ttfb,
+        fcp: fcp,
+        windowLoad: windowLoad,
+        domLoad: domLoad,
+        resourcePerformance: resourcePerformance,
+      })
+    );
   }, 0);
 });
