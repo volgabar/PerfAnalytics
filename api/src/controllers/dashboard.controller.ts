@@ -10,14 +10,14 @@ export const getFiltered = async (req: Request, res: Response): Promise<Response
     const metrics = await getMetrics();
 
     if(!metrics){
-        return res.status(404).send();
+        return res.status(204).send();
     }
 
     const parsedMetrics: IPerfMetrics = JSON.parse(metrics);
     const filteredMetrics: IPerfMetric[] = filterMetrics(parsedMetrics);
     
     if(filteredMetrics.length){
-        return res.status(404).send();
+        return res.status(204).send();
     }
 
     const transformedMetrics = transformMetrics(filteredMetrics);
