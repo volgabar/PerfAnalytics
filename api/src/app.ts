@@ -45,7 +45,7 @@ app.use(router);
 // error middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err) {
-        console.error('ERROR !', err);
+        console.error('ERROR !!', err);
         res.status(500).send('Something went wrong!');
     } else {
         next();
