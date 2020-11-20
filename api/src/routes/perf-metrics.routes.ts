@@ -1,6 +1,6 @@
 import { Router } from 'express';
 //local imports
-import { addOne } from '../controllers/perfMetrics.controller';
+import { addOne } from '../controllers/perf-metrics.controller';
 
 export default (router: Router): void => {
     /**

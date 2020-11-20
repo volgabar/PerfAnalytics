@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 // local imports
 import IPerfMetric from '../interfaces/perf-metric';
-import { addOne } from './perfMetrics.controller';
+import { addOne } from './perf-metrics.controller';
 
 test('should call writeFileAsync service with given metric', async () => {
     const date = new Date();

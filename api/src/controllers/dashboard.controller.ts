@@ -8,9 +8,20 @@ import { transformMetrics } from '../services/transform-metrics';
 
 export const getFiltered = async (req: Request, res: Response): Promise<Response> => {
     const metrics = await getMetrics();
+
+    if(!metrics){
+        return res.status(404).send();
+    }
+
     const parsedMetrics: IPerfMetrics = JSON.parse(metrics);
     const filteredMetrics: IPerfMetric[] = filterMetrics(parsedMetrics);
+    
+    if(filteredMetrics.length){
+        return res.status(404).send();
+    }
+
     const transformedMetrics = transformMetrics(filteredMetrics);
     const stringifiedMetrics = JSON.stringify(transformedMetrics);
+
     return res.status(200).send(stringifiedMetrics);
 };
