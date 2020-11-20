@@ -7,7 +7,7 @@ export default (router: Router): void => {
      * @swagger
      * /dashboard:
      *  get:
-     *    description: Use to request last 30 munites dashboard metrics
+     *    description: Use to request last 30 munites of dashboard metrics
      *    responses:
      *      '200':
      *         description: A succesful response

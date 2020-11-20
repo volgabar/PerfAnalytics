@@ -7,7 +7,7 @@ const App: FC = () => {
     return (
         <div className="App">
             <Header>
-                <p>PerfAnalytics</p>
+                <p>PerfAnalytics Dashboard</p>
             </Header>
             <Charts />
         </div>
