@@ -23,12 +23,12 @@ jobs:
       - name: yarn install
         run: |
           yarn install
-      - name: yarn lint
-        run: |
-          yarn lint     
-      - name: yarn test
-        run: |
-          yarn test 
+      # - name: yarn lint
+      #   run: |
+      #     yarn lint     
+      # - name: yarn test
+      #   run: |
+      #     yarn test 
 
       - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
         with:

@@ -10,8 +10,8 @@ import { getMetrics } from './dashboard_controller';
 //     return res;
 //   };
 
-test('should return calculated dashboard metrics', async () => {    
-    const metrics = await  getMetrics({} as Request,{} as Response);
+test('should return calculated dashboard metrics', async () => {
+    const metrics = await getMetrics({} as Request, {} as Response);
 
     expect(metrics.status).toBe(200);
     // expect(metrics.json).toBe({} as IDashboardResponse);
