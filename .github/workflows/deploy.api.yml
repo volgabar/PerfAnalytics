@@ -1,0 +1,36 @@
+name: Deploy API
+
+on:
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: api
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Use Node.js        
+        uses: actions/setup-node@v1
+        with:
+            #        node-version: ${{ matrix.node-version }}
+            node-version: "12.x"                         
+      - name: yarn install
+        run: |
+          yarn install
+      - name: yarn test
+        run: |
+          yarn test 
+
+      - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "perf-analytics-app-api" #Must be unique in Heroku
+          heroku_email: "volgabarcivelek@gmail.com"
+          appdir: "api" # <- This will point to the api folder in your project
+          usedocker: true
