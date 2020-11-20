@@ -38,6 +38,15 @@ jobs:
       #     appdir: "dashboard" # <- This will point to the api folder in your project
       #     usedocker: true
 
+      # - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
+      #   id: heroku
+      #   uses: jctaveras/heroku-deploy@v1.0.0  # use the latest version of the action
+      #   with:
+      #     email: "volgabarcivelek@gmail.com" # your heroku email
+      #     api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
+      #     app_name: "perf-analytics-app-dashboard" # you aplication name
+      #     dockerfile_path: './dashboard/' # set the path to the folder wher the Dokerfile is located
+
       - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
         id: heroku
         uses: jctaveras/heroku-deploy@v1.0.0  # use the latest version of the action
@@ -45,4 +54,5 @@ jobs:
           email: "volgabarcivelek@gmail.com" # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "perf-analytics-app-dashboard" # you aplication name
-          dockerfile_path: './dashboard/' # set the path to the folder wher the Dokerfile is located
+          dockerfile_path: 'dashboard' # set the path to the folder wher the Dokerfile is located
+          options: '' # Docker Build Options
