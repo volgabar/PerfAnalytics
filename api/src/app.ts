@@ -15,24 +15,24 @@ app.use(bodyParser.json());
 
 const swaggerOptions = {
     definition: {
-        openapi: "3.0.0",
+        openapi: '3.0.0',
         info: {
-            version: "1.0.0",
-            title: "PerfAnalytics API",
-            description: "PerfAnalytics Info",
+            version: '1.0.0',
+            title: 'PerfAnalytics API',
+            description: 'PerfAnalytics Info',
             contact: {
-                name: "Volga Barış Civelek"
+                name: 'Volga Barış Civelek',
             },
         },
         servers: [
             {
-                url: process.env.API_URL || "http://localhost:3000",
+                url: process.env.API_URL || 'http://localhost:3000',
             },
         ],
-        basePath: "/api"
+        basePath: '/api',
     },
     explorer: true,
-    apis: ["**/*.ts"]
+    apis: ['**/*.ts'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -45,7 +45,7 @@ app.use(router);
 // error middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err) {
-        console.error("ERROR !!", err);
+        console.error('ERROR !!', err);
         res.status(500).send('Something went wrong!');
     } else {
         next();
