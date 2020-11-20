@@ -39,6 +39,7 @@ window.addEventListener("load", function (e) {
         windowLoad: windowLoad,
         domLoad: domLoad,
         resourcePerformance: resourcePerformance,
+        createdAt: new Date(),
       })
     );
   }, 0);
