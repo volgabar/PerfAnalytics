@@ -45,4 +45,4 @@ jobs:
           email: "volgabarcivelek@gmail.com" # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "perf-analytics-app-dashboard" # you aplication name
-          dockerfile_path: 'dashboard' # set the path to the folder wher the Dokerfile is located
+          dockerfile_path: '../../dashboard' # set the path to the folder wher the Dokerfile is located
