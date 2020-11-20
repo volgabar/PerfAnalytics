@@ -10,7 +10,7 @@ RUN yarn install
 # Copy app source code
 COPY . .
 
-ENV API_URL=http://localhost:8080
+ENV API_URL=https://perf-analytics-app-api.herokuapp.com
 ENV FILE_NAME=./dist/perfMetrics.json
 
 RUN yarn run build:prod
