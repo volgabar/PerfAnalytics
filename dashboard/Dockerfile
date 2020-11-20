@@ -20,15 +20,6 @@ FROM nginx:alpine
 # Copy react build files
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
-# Remove default config
-# RUN rm /etc/nginx/conf.d/default.conf
-# Copy our config
-# COPY config/nginx.conf /etc/nginx/conf.d
-
-# CMD ["nginx", "-g", "daemon off;"]
-# CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
-# CMD gunicorn --bind 0.0.0.0:$PORT wsgi
-
 ADD ./config/nginx.conf /etc/nginx/conf.d/default.template
 
 CMD sh -c "envsubst \"`env | awk -F = '{printf \" \\\\$%s\", $1}'`\" < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
