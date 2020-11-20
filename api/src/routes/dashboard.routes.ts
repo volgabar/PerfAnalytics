@@ -1,6 +1,6 @@
 import { Router } from 'express';
 //local imports
-import { getMetrics } from '../controllers/dashboard_controller';
+import { getFiltered } from '../controllers/dashboard.controller';
 
 export default (router: Router): void => {
     /**
@@ -12,5 +12,5 @@ export default (router: Router): void => {
      *      '200':
      *         description: A succesful response
      */
-    router.get('/dashboard', getMetrics);
+    router.get('/dashboard', getFiltered);
 };

@@ -1,5 +1,5 @@
-import IDashboardResponse from '../interfaces/dashboardResponse';
-import IPerfMetric from '../interfaces/perfMetric';
+import IDashboardResponse from '../interfaces/dashboard-response';
+import IPerfMetric from '../interfaces/perf-metric';
 
 export const transformMetrics = (metrics: IPerfMetric[]): IDashboardResponse => {
     const transformedMetrics = metrics?.reduce<IDashboardResponse>(

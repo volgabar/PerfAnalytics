@@ -3,7 +3,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 //local imports
 import { getPerfMetrics } from '../services/api_call';
-import IDashboardResponse from '../interfaces/dashboardResponse';
+import IDashboardResponse from '../interfaces/dashboard-response';
 import Chart from './Chart';
 
 const Charts: FC = () => {

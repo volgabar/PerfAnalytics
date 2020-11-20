@@ -1,6 +1,6 @@
 import { Router } from 'express';
 //local imports
-import { addMetric } from '../controllers/perfMetrics_controller';
+import { addOne } from '../controllers/perfMetrics.controller';
 
 export default (router: Router): void => {
     /**
@@ -43,5 +43,5 @@ export default (router: Router): void => {
      *       '200':
      *          description: A succesful response
      */
-    router.post('/perfMetrics', addMetric);
+    router.post('/perfMetrics', addOne);
 };

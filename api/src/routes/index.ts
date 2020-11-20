@@ -1,7 +1,7 @@
 import { Router } from 'express';
 //local imports
-import PerfMetricsRoutes from './perfMetrics_routes';
-import DashboardRoutes from './dashboard_routes';
+import PerfMetricsRoutes from './perf-metrics.routes';
+import DashboardRoutes from './dashboard.routes';
 
 const routes = (router: Router): void => {
     PerfMetricsRoutes(router);

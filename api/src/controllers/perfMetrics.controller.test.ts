@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 // local imports
-import IPerfMetric from '../interfaces/perfMetric';
-import { addMetric } from './perfMetrics_controller';
+import IPerfMetric from '../interfaces/perf-metric';
+import { addOne } from './perfMetrics.controller';
 
 test('should call writeFileAsync service with given metric', async () => {
     const date = new Date();
@@ -14,7 +14,7 @@ test('should call writeFileAsync service with given metric', async () => {
         createdAt: date.toISOString(),
     };
 
-    const result = await addMetric({} as Request, {} as Response);
+    const result = await addOne({} as Request, {} as Response);
 
     expect(result.status).toBe(200);
     expect(result.json).toMatchObject(newMetric);

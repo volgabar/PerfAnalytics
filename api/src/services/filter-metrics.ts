@@ -1,4 +1,4 @@
-import IPerfMetric from '../interfaces/perfMetric';
+import IPerfMetric from '../interfaces/perf-metric';
 
 export const filterMetrics = ({ metrics }: { metrics: IPerfMetric[] }): IPerfMetric[] => {
     const date = new Date();

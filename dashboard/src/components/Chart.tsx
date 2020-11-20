@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { FC } from 'react';
 import { Line } from 'react-chartjs-2';
 // local imports
-import { IMetricType } from '../interfaces/dashboardResponse';
-import { MetricNames } from '../enums/metricNames';
+import { IMetricType } from '../interfaces/dashboard-response';
+import { MetricNames } from '../enums/metric-names';
 
 const chartOptions = (name: string) => {
     return {

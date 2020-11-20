@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export const readFileAsync = async (): Promise<string> => {
+export const getMetrics = async (): Promise<string> => {
     const fileName = process.env.FILE_NAME || './dist/perfMetrics.json';
 
     const doesExist = await new Promise((resolve) => {
@@ -15,7 +15,7 @@ export const readFileAsync = async (): Promise<string> => {
     });
 
     if (!doesExist) {
-        return '{}';
+        return null;
     }
 
     return await new Promise((resolve, reject) => {
