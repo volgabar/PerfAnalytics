@@ -30,6 +30,7 @@ window.addEventListener("load", function (e) {
 
     var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
     var theUrl = "https://perf-analytics-app-api.herokuapp.com/perf-metrics";
+    var date = new Date();
     xmlhttp.open("POST", theUrl);
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send(
@@ -39,7 +40,7 @@ window.addEventListener("load", function (e) {
         windowLoad: windowLoad,
         domLoad: domLoad,
         resourcePerformance: resourcePerformance,
-        createdAt: new Date(),
+        createdAt: date.toISOString(),
       })
     );
   }, 0);

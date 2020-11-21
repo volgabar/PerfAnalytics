@@ -6,7 +6,6 @@ export const getMetrics = async (): Promise<string> => {
     const doesExist = await new Promise((resolve) => {
         fs.access(fileName, (err) => {
             if (err) {
-                console.log(err);
                 resolve(false);
             } else {
                 resolve(true);

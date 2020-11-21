@@ -45,14 +45,14 @@ routes(router);
 app.use(router);
 
 // error middleware
-app.use((err: ApplicationError, req: Request, res: Response, next: NextFunction) => {  
+app.use((err: ApplicationError, req: Request, res: Response, next: NextFunction) => {
     if (res.headersSent) {
         return next(err);
     }
-    
+
     return res.status(err.status || 500).json({
-      error: process.env.NODE_ENV === 'development' ? err : undefined,
-      message: err.message
+        error: process.env.NODE_ENV === 'development' ? err : undefined,
+        message: err.message,
     });
 });
 

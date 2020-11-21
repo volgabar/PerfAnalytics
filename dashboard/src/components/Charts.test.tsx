@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, render, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import Charts from './Charts';
 import { getPerfMetrics } from '../services/api_call';

@@ -9,7 +9,6 @@ export const addMetric = async (newMetric: IPerfMetric): Promise<string> => {
     const doesExist = await new Promise((resolve) => {
         fs.access(fileName, (err) => {
             if (err) {
-                console.log(err);
                 resolve(false);
             } else {
                 resolve(true);
@@ -23,7 +22,6 @@ export const addMetric = async (newMetric: IPerfMetric): Promise<string> => {
         const oldData: IPerfMetrics = await new Promise((resolve, reject) => {
             fs.readFile(fileName, 'utf8', (err, data) => {
                 if (err) {
-                    console.log(err);
                     reject(err);
                 } else {
                     oldMetrics = JSON.parse(data);
@@ -42,12 +40,8 @@ export const addMetric = async (newMetric: IPerfMetric): Promise<string> => {
     return new Promise((resolve, reject) => {
         fs.writeFile(fileName, stringifiedNewData, 'utf8', (err) => {
             if (err) {
-                console.log('Async Write: NOT successful!');
-                console.log(err);
                 reject(err);
             } else {
-                console.log('Async Write: successful!');
-                console.log(stringifiedNewData);
                 resolve(stringifiedNewData);
             }
         });
