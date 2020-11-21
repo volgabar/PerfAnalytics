@@ -1,10 +1,11 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 //local imports
 import routes from './routes';
+import ApplicationError from './errors/application-error';
 
 const app: express.Application = express();
 const router: express.Router = express.Router();
@@ -44,13 +45,15 @@ routes(router);
 app.use(router);
 
 // error middleware
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    if (err) {
-        console.error('ERROR: ', err);
-        res.status(500).send('Something went wrong!');
-    } else {
-        next();
+app.use((err: ApplicationError, req: Request, res: Response, next: NextFunction) => {  
+    if (res.headersSent) {
+        return next(err);
     }
+    
+    return res.status(err.status || 500).json({
+      error: process.env.NODE_ENV === 'development' ? err : undefined,
+      message: err.message
+    });
 });
 
 app.listen(process.env.PORT || 3000, () => {

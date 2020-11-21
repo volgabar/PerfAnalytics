@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import requestMiddleware from '../middleware/request-middleware';
 import IPerfMetric from '../interfaces/perf-metric';
 //local imports
 import IPerfMetrics from '../interfaces/perf-metrics';
@@ -6,7 +7,7 @@ import { filterMetrics } from '../services/filter-metrics';
 import { getMetrics } from '../services/get-metrics';
 import { transformMetrics } from '../services/transform-metrics';
 
-export const getFiltered = async (req: Request, res: Response): Promise<Response> => {
+const getFiltered = async (req: Request, res: Response): Promise<Response> => {
     const metrics = await getMetrics();
 
     if (!metrics) {
@@ -16,7 +17,7 @@ export const getFiltered = async (req: Request, res: Response): Promise<Response
     const parsedMetrics: IPerfMetrics = JSON.parse(metrics);
     const filteredMetrics: IPerfMetric[] = filterMetrics(parsedMetrics);
 
-    if (filteredMetrics.length) {
+    if (!filteredMetrics.length) {
         return res.status(204).send();
     }
 
@@ -25,3 +26,5 @@ export const getFiltered = async (req: Request, res: Response): Promise<Response
 
     return res.status(200).send(stringifiedMetrics);
 };
+
+export const getFilteredController = requestMiddleware(getFiltered);

@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import IDashboardResponse from '../interfaces/dashboard-response';
 // local imports
-import { getFiltered } from './dashboard.controller';
+import { getFilteredController } from './dashboard.controller';
 
 // const mockResponse = () => {
 //     const res = {};
@@ -11,7 +11,7 @@ import { getFiltered } from './dashboard.controller';
 //   };
 
 test('should return calculated dashboard metrics', async () => {
-    const metrics = await getFiltered({} as Request, {} as Response);
+    const metrics = await getFilteredController({} as Request, {} as Response, {} as NextFunction);
 
     expect(metrics.status).toBe(200);
     // expect(metrics.json).toBe({} as IDashboardResponse);

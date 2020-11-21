@@ -18,10 +18,9 @@ export const getMetrics = async (): Promise<string> => {
         return null;
     }
 
-    return await new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         fs.readFile(fileName, 'utf8', (err, data) => {
             if (err) {
-                console.log('RFA', err);
                 reject(err);
             } else {
                 resolve(data);
