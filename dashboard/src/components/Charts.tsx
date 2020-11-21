@@ -19,7 +19,7 @@ const Charts: FC = () => {
     }, []);
 
     return perfMetrics ? (
-        <div className="Charts">
+        <div className="Charts" data-testid="chartContainer">
             {Object.keys(perfMetrics).map((metricKey) => (
                 <Fragment key={metricKey}>
                     <Chart data={perfMetrics[metricKey as keyof IDashboardResponse]} metricType={metricKey} />
@@ -27,7 +27,7 @@ const Charts: FC = () => {
             ))}
         </div>
     ) : (
-        <div className="Spinner">
+        <div className="Spinner" data-testid="spinner">
             <Loader type="Puff" color="#00BFFF" height={100} width={100} />
         </div>
     );

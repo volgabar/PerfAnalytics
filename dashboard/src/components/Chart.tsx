@@ -53,7 +53,7 @@ const transformData = (data: IMetricType[]) => {
 
 const Chart: FC<{ data: IMetricType[]; metricType: string }> = ({ data, metricType }) => {
     return (
-        <div className="Chart">
+        <div className="Chart" data-testid={`${metricType}Chart`}>
             <Line data={transformData(data)} options={chartOptions(metricType)} />
         </div>
     );

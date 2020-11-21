@@ -24,7 +24,7 @@ describe('<App />', () => {
             render(<App />, container);
         });
 
-        const headerElement = screen.getByText('PerfAnalytics');
+        const headerElement = screen.getByText('PerfAnalytics Dashboard');
         expect(headerElement).toBeInTheDocument();
     });
 });
